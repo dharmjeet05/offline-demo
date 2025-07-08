@@ -34,11 +34,24 @@ export default defineConfig({
             urlPattern: /^https:\/\/jsonplaceholder\.typicode\.com\/posts\/1$/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'api-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 24 * 60 * 60, // 1 day
-              },
+              cacheName: 'home-api-cache',
+              expiration: { maxEntries: 5, maxAgeSeconds: 86400 },
+            },
+          },
+          {
+            urlPattern: /^https:\/\/jsonplaceholder\.typicode\.com\/posts\/2$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'about-api-cache',
+              expiration: { maxEntries: 5, maxAgeSeconds: 86400 },
+            },
+          },
+          {
+            urlPattern: /^\/about$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'page-cache',
+              expiration: { maxEntries: 5, maxAgeSeconds: 86400 },
             },
           },
         ],
